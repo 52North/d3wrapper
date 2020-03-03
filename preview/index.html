@@ -1,0 +1,46 @@
+<html>
+
+
+<!-- https://github.com/aws/aws-amplify/issues/678 fix: -->
+<script>
+    if (global === undefined) {
+        var global = window;
+    }
+</script>
+<!-- https://github.com/aws/aws-amplify/issues/678 fix end-->
+
+
+<body>
+
+    <p>You can comment the "setTimeout()" functions to prevent the diagram to be updated after 5 seconds and 10 seconds.</p>
+
+    <d3-timeseries-graph-wrapper
+        urls="['https://www.fluggs.de/sos2/api/v1/__63', 'https://www.fluggs.de/sos2/api/v1/__72', 'https://www.fluggs.de/sos2/api/v1/__26']"
+        timespaninput="[1583062065506, 1583162089673]"></d3-timeseries-graph-wrapper>
+
+    <script src="./d3TsWrapper.js"></script>
+</body>
+
+<script>
+
+    const component = document.querySelector('d3-timeseries-graph-wrapper');
+    console.log(component);
+
+    component.addEventListener('display', (event) => {
+        alert(event.detail);
+    });
+
+    setTimeout(() => {
+        console.log(component.getAttribute('urls'));
+        component.setAttribute('urls', "['https://www.fluggs.de/sos2/api/v1/__63', 'https://www.fluggs.de/sos2/api/v1/__26']");
+    }, 5000);
+
+    setTimeout(() => {
+        console.log(component.getAttribute('timespaninput'));
+        component.setAttribute('timespaninput', "[" + (new Date().getTime() - 19000000) + "," + (new Date().getTime() - 50000) + "]");
+    }, 10000);
+
+
+</script>
+
+</html>

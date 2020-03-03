@@ -1,0 +1,28 @@
+<div>
+    <h1>d3 timeseries graph wrapper component</h1>
+    <h2>example implementation</h2>
+</div>
+
+<div>
+    <div style="height: 400px; width: 80%;">
+        <n52-d3-timeseries-graph
+        [datasetIds]="datasetIds"
+        [datasetOptions]="datasetOptions"
+        [timeInterval]="timespan"
+
+        [selectedDatasetIds]="selectedIds"
+        (onTimespanChanged)="timespanChanged($event)"
+        (onHighlight)="highlight($event)"
+        (offHighlight)="highlight($event)"
+        [presenterOptions]="diagramOptionsD3"
+        ></n52-d3-timeseries-graph>
+    </div>
+    <div style="height: 20px; width: 40px;">
+        <n52-drag-options (onTogglePanZoom)="togglePanZoom()"></n52-drag-options>
+    </div>
+    {{panZoom}}
+</div>
+    
+<div>
+    <button (click)="triggerEvent()">click to trigger event</button>
+</div>
